@@ -16,7 +16,7 @@ markdown_ext: md
 # Site settings
 
 name: S800 corpus revision
-homeurl: "https://github.com/spyysalo/s800-revision-docs/"
+homeurl: "https://spyysalo.github.io/s800-revision-docs/"
 editurl: "https://github.com/spyysalo/s800-revision-docs/edit/master"
 issueurl: "https://github.com/spyysalo/s800-revision-docs/issues"
 
