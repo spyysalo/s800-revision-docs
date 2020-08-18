@@ -25,5 +25,5 @@ issueurl: "https://github.com/spyysalo/s800-revision-docs/issues"
 # Collection settings
 
 collections:
-  type:
+  entity:
     output: true
