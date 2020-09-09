@@ -93,50 +93,51 @@ In addition to the primary annotation file __tags.tsv__, the distribution includ
 * __filtered_tags.tsv__ -- a filtered version of tags.csv where only NCBI-taxonomy-names are included (i.e. "species clues" such as "patient", "woman", etc. have been removed)
 
 Comparing this with tags.tsv gives us an idea of what the LINNAEUS authors/annotators tagged but did not consider an NCBI taxonomy name:
-`diff tags.tsv filtered_tags.tsv | egrep '^<' | cut -f 5 | sort | uniq -c | sort -rn`
-`437 patients`
-`159 patient`
-`112 people`
-`111 women`
-`80 men`
-`71 participants`
-`66 murine`
-`62 children`
-`51 persons`
-`31 calf`
-`27 calves`
-`22 Patients`
-`19 person`
-`18 guinea-pigs`
-`18 Participants`
-`18 MRSA`
-`17 participant`
-`12 guinea-pig`
-`12 chick`
-`10 boy`
-`5 child`
-`5 Women`
-`5 Persons`
-`5 Children`
-`4 woman`
-`4 People`
-`3 Patient`
-`3 Guinea-pigs`
-`2 infants`
-`2 girls`
-`2 boys`
-`2 Murine`
-`2 Men`
-`2 Child`
-`2 Calves`
-`1 text`
-`1 schoolchildren`
-`1 peoples`
-`1 infant`
-`1 girl`
-`1 Person`
-`1 Participant`
-`1 Calf`
+
+<pre><code>diff tags.tsv filtered_tags.tsv | egrep '^<' | cut -f 5 | sort | uniq -c | sort -rn
+437 patients
+159 patient
+112 people
+111 women
+80 men
+71 participants
+66 murine
+62 children
+51 persons
+31 calf
+27 calves
+22 Patients
+19 person
+18 guinea-pigs
+18 Participants
+18 MRSA
+17 participant
+12 guinea-pig
+12 chick
+10 boy
+5 child
+5 Women
+5 Persons
+5 Children
+4 woman
+4 People
+3 Patient
+3 Guinea-pigs
+2 infants
+2 girls
+2 boys
+2 Murine
+2 Men
+2 Child
+2 Calves
+1 text
+1 schoolchildren
+1 peoples
+1 infant
+1 girl
+1 Person
+1 Participant
+1 Calf</code></pre>
 
 ## External links to LINNEAUS and S800 corpora
 
