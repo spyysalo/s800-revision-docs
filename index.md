@@ -2,21 +2,6 @@
 layout: entry
 title: Documentation for S800 corpus revision
 ---
-<!--
-This is a placeholder for documentation on the revision of the [S800 corpus](https://species.jensenlab.org/) annotation.
-
-As an example, consider the following fragment of documentation
-
-<div class="documentation-example" markdown="1">
-Mentions of species names are annotated as [Species]()
-
-~~~ ann
-We study E. coli.
-T1 Species 9 16 E. coli
-~~~
-
-</div>
--->
 
 ## Original Curator Guidelines for S800 corpus
 
@@ -155,12 +140,12 @@ Comparing this with tags.tsv gives us an idea of what the LINNAEUS authors/annot
 
 ## External links to LINNEAUS and S800 corpora
 
-*[version 1.1 release of the LINNAEUS corpus](https://github.com/spyysalo/linnaeus-corpus-data)
-*[version 1.0 of s800 corpus](http://species.jensenlab.org/files/S800-1.0.tar.gz)
+* [version 1.1 release of the LINNAEUS corpus](https://github.com/spyysalo/linnaeus-corpus-data)
+* [version 1.0 of s800 corpus](http://species.jensenlab.org/files/S800-1.0.tar.gz)
 
 ## Repositories for conversion to CONLL format
 
-*[LINNAEUS](https://github.com/spyysalo/linnaeus-corpus)
-*[S800](https://github.com/spyysalo/s800)
+* [LINNAEUS](https://github.com/spyysalo/linnaeus-corpus)
+* [S800](https://github.com/spyysalo/s800)
 
 For information on Annodoc, see <http://spyysalo.github.io/annodoc/>.
