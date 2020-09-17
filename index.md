@@ -3,6 +3,14 @@ layout: entry
 title: Documentation for S800 corpus revision
 ---
 
+## Revision steps
+
+### 1. Decouple recognition from normalization, address overall consistency
+
+The original S800 corpus data only annotated mentions that could be normalized to a particular (2013?) version of the NCBI Taxonomy. From the perspective of recognizing mentions of species names (regardless of normalization), this caused the annotation to appear incomplete in places. In the first revision step, annotation was added for scientific and common names of species regardless of whether they could be normalized, and a revision pass addressing the overall consistency of annotation was performed.
+
+**Relevant commit**: [59fe5be](https://github.com/spyysalo/s800-revision-data/commit/59fe5be9fcf37ee0fd803336478559b5ea3f4692)
+
 ## Original Curator Guidelines for S800 corpus
 
 The annotation guidelines as described in the [original publication of the S800 corpus](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable)
