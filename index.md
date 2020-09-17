@@ -89,8 +89,8 @@ T4 Species 236 249 Norway spruce
 
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
-T1 Species 8 15 GSW-R14
-T2 Species 73 97 F. gelidilacus LMG 21477
+T1 Species 7 15 GSW-R14
+T2 Species 72 96 F. gelidilacus LMG 21477
 ~~~
 
 * Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances.
