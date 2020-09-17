@@ -15,7 +15,9 @@ The original S800 corpus data only annotated mentions that could be normalized t
 
 The annotation guidelines as described in the [original publication of the S800 corpus](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable)
 
-The guidelines to curators were to annotate all substrings, which can meaningfully be identified as _referring to a taxon_. While the main focus was on annotating __species__ mentions, strings referring to __any taxonomic level__, (e.g.kingdoms, orders, genera, strains) were also considered. The main guidelines were:
+The guidelines to curators were to annotate all substrings, which can meaningfully be identified as _referring to a taxon_. While the main focus was on annotating __species__ mentions, strings referring to __any taxonomic level__, (e.g.kingdoms, orders, genera, strains) were also considered. These data were very likely never released.
+
+The main guidelines were:
 
 * All document substrings must be evaluated and all mentions including repetitions should be listed in the order of appearance in the text.
 * The annotated name types among others should include: Linnaean binomials, common names, strain names, author defined acronyms.
@@ -23,7 +25,7 @@ The guidelines to curators were to annotate all substrings, which can meaningful
 * Special cases of adjectives being used to indicate a taxon, misspellings, typographic or other errors and enumerations were indicated as such.
 * Taxonomic mentions that did not correspond to an existing NCBI Taxonomy database entry were also indicated.
 
-## Inconsistencies detected contrasting the above guidelines
+## Inconsistencies detected that initially seem to contrast the above guidelines
 
 * Some fairly obvious species names lack annotation for unidentified reasons. For examples, see mentions of _Escherichia coli_ in [20971900](https://pubmed.ncbi.nlm.nih.gov/20971900/) and [21324422](https://pubmed.ncbi.nlm.nih.gov/21324422/), _Pseudomonas aeruginosa_ in [21075931](https://pubmed.ncbi.nlm.nih.gov/21075931/), and  _Flavobacterium sinopsychrotolerans_ in [20118284](https://pubmed.ncbi.nlm.nih.gov/20118284/).
 * Inconsistencies in tagging of strains (e.g. strains are not tagged in [20118285](https://pubmed.ncbi.nlm.nih.gov/20118285/)
@@ -50,17 +52,57 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 * niger vs. A. niger strain
 * galaxias vs. native galaxias
 * Salmonella enterica vs. Salmonella enterica serovar Typhimurium
+* (this example is extra) Influenza vs. Influenza vaccine
 
-## Suggestions
+## Additional guidelines for reannotation of the S800 corpus
 
-* Do not include the expressions _sp. nov._ and _gen. nov., sp. nov._ in the species name, since these are supposedly used only the first time a genus and/or a species/subspecies is described to denote that it's new, so they are not part of the scientific name and shouldn't be found anywhere else other than the first paper describing them.
-* Superscript T to denote type strain should be included in species' names.
-* The person's name should not be included in the species name, especially when it is in parentheses. The non-parenthesized form is a bit more complex (at least in the example above _Pseudacteon tricuspis_ Borgmeier is a valid name shown as a synonym for _Pseudacteon tricuspis_ in NCBI taxonomy). For annotation consistency the suggestion is to drop these names in all appearances. (The confusion with subspecies can be avoided because of the capital letter at the start of the second word, e.g. _Ursus arctos arctos_ would be easy to distinguish from _Ursus arctos_ Linneaus and then drop the name for the latter.)
-* Don't include common head nouns such as "plants" in annotation span
-* Don't include affixes not part of species name such as "anti-" in annotation span
-* Don't include nouns identifying levels of taxonomy such as "strain" in annotation span
-* Don't include adjectival premodifiers such as "native" in annotation span
-* Include serotypes in species names (they can be mapped back to unique taxids in NCBI taxonomy, [e.g.](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=90371))
+* Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
+* __crab__ is an infraorder containing 850 species, so it should be annotated only if higher taxonomic levels are annotated in general.
+* The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. "rice" mentioned as food or "tobacco" as cigarettes should still be annotated).
+* Genus or higher level mentions (e.g. Arabidopsis, yeast) should only be annotated as the real taxinomic level (i.e. genus, phylum) and not as synonyms of species names. (e.g. this annotation should be removed in the reannotated version, or assigned the genus taxid) 
+
+~~~ ann
+The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
+T1 Species 35 46	Arabidopsis
+~~~
+
+* Do __not__ include the expressions _sp. nov._ and _gen. nov., sp. nov._ in the species name, since these are supposedly used only the first time a genus and/or a species/subspecies is described to denote that it's new, so they are not part of the scientific name and shouldn't be found anywhere else other than the first paper describing them.
+* Superscript T to denote type strain should __not__ be included in species' names.
+* The person's name should __not__ be included in the species name, especially when it is in parentheses. The non-parenthesized form is a bit more complex (at least in the example above _Pseudacteon tricuspis_ Borgmeier is a valid name shown as a synonym for _Pseudacteon tricuspis_ in NCBI taxonomy). For annotation consistency the suggestion is to __drop these names in all appearances__. (The confusion with subspecies can be avoided because of the capital letter at the start of the second word, e.g. _Ursus arctos arctos_ would be easy to distinguish from _Ursus arctos_ Linneaus and then drop the name for the latter.)
+* Do __not__ include common head nouns such as "plants" in annotation span
+* Annotate __nothing__ for anti-HCV, same for anti-rabbit. These are antibodies.
+* Annotate the species name in cases like __Influenza__ vaccine
+* Do __not__ include nouns identifying levels of taxonomy such as "strain" in annotation span
+* Do __not__ include adjectival premodifiers such as "native" in annotation span
+* __Include serotypes__ in species names (they can be mapped back to unique taxids in NCBI taxonomy, [e.g.](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=90371))
+* "common name (scientific name)" mentions should be annotated as __two mentions__ e.g from 21054435:
+
+~~~ ann
+We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
+T1 Species 175 190 Fagus sylvatica
+T2 Species 192 206 European beech
+T3 Species 223 234 Picea abies
+T4 Species 236 249 Norway spruce
+~~~
+
+* name strain mentions should be annotated as one mention, e.g. from 20154326
+
+~~~ ann
+Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
+T1 Species 8 15 GSW-R14
+T2 Species 73 97 F. gelidilacus LMG 21477
+~~~
+
+* Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances.
+* Adjectival forms like __murine__, __bovine__ that map to a specific species should be annotated
+* Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
+* Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
+* Non-name mentions (e.g. man, woman) and species hints (e.g. patient should not be annotated)
+* Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
+* Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
+* Model words like __SCID__ mouse should be excluded from annotations
+* Preprocessing errors (e.g. & amp;) should be fixed
+
 
 ## Experiments to automatically correct inconsistencies on the corpus
 
@@ -156,5 +198,10 @@ Comparing this with tags.tsv gives us an idea of what the LINNAEUS authors/annot
 
 * [LINNAEUS](https://github.com/spyysalo/linnaeus-corpus)
 * [S800](https://github.com/spyysalo/s800)
+
+## Other repositories relevant to this project
+* [Hartuu's S800 examiner](https://harttu.github.io/s800_ambiguous_html/)
+* [S800 original in BRAT](http://ann.turkunlp.org:8088/index.xhtml#/S800-original/)
+* [S800 revision in BRAT](http://ann.turkunlp.org:8088/index.xhtml#/S800/)
 
 For information on Annodoc, see <http://spyysalo.github.io/annodoc/>.
