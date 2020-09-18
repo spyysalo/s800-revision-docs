@@ -44,7 +44,7 @@ A complete list of inconsistencies can be viewed in this [table](https://docs.go
 
 These are mainly annotation boundary issues. Correct annotation boundaries was not a requirement in the original corpus annotation guidelines and was not taken into account when reporting F-scores on the datasets (_"For the mention-level statistics we used flexible boundary matching of species names, meaning that taggers would receive a true positive if it produced a tag that overlapped with an annotated substring and had the correct assigned taxonomic identifier. For example, if the string “E. coli K12” is annotated in S800 and the tagger matches only the string “E. coli”, it will be counted as a true positive (provided the taxonomic identifier is also correct)."_).
 
-* The expressions _sp. nov._ and _gen. nov., sp. nov._ following a species name are included in annotated spans in some but not all cases. For example, these are part of the annotated spans at the start of documents [20118285](https://pubmed.ncbi.nlm.nih.gov/20118285/), [20139281](https://pubmed.ncbi.nlm.nih.gov/20139281/), and 20154326[20139281](https://pubmed.ncbi.nlm.nih.gov/20139281/), but not [19667393](https://pubmed.ncbi.nlm.nih.gov/19667393/), [20139283](https://pubmed.ncbi.nlm.nih.gov/20139283/) and [20139284](https://pubmed.ncbi.nlm.nih.gov/20139284/)
+* The expressions _sp. nov._ and _gen. nov., sp. nov._ following a species name are included in annotated spans in some but not all cases. For example, these are part of the annotated spans at the start of documents [20118285](https://pubmed.ncbi.nlm.nih.gov/20118285/), [20139281](https://pubmed.ncbi.nlm.nih.gov/20139281/), and [20154326](https://pubmed.ncbi.nlm.nih.gov/20154326/), but not [19667393](https://pubmed.ncbi.nlm.nih.gov/19667393/), [20139283](https://pubmed.ncbi.nlm.nih.gov/20139283/) and [20139284](https://pubmed.ncbi.nlm.nih.gov/20139284/)
 * The string __(T)__ appearing at the end of strain names (superscript T in the original text) is included in annotated spans in some but not all cases. For examples, compare e.g. [19667393](https://pubmed.ncbi.nlm.nih.gov/19667393/) and [20118285](https://pubmed.ncbi.nlm.nih.gov/20118285/).
 * When the name of the person who first named a species is mentioned in parenthesis after the species name (e.g. _Diabrotica virgifera virgifera_ (LeConte)), this is annotated in some but not all cases. Also, the same question arises for the non-parenthesized forms such as _Pseudacteon tricuspis_ Borgmeier.
 * tomato vs. tomato plant(s)
@@ -79,10 +79,10 @@ T1 Species 35 46	Arabidopsis
 
 ~~~ ann
 We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
-T1 Species 175 190 Fagus sylvatica
-T2 Species 192 206 European beech
-T3 Species 223 234 Picea abies
-T4 Species 236 249 Norway spruce
+T1 Species 174 189 Fagus sylvatica
+T2 Species 191 205 European beech
+T3 Species 222 233 Picea abies
+T4 Species 235 248 Norway spruce
 ~~~
 
 * name strain mentions should be annotated as one mention, e.g. from 20154326
@@ -102,6 +102,12 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
 * Model words like __SCID__ mouse should be excluded from annotations
 * Preprocessing errors (e.g. & amp;) should be fixed
+
+* all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
+  * standalone _yeast_: OOS+taxid:147537 ("true yeast" subphylum) (Note: an even higher level may be included)
+  * _black yeast_: OOS+taxid:34395 ("black yeast" order)
+  * _budding yeast_: OOS+taxid:4892 ("budding yeasts" order)
+  * _fission yeast_: OOS+taxid:4894 ("fission yeasts" family)
 
 
 ## Experiments to automatically correct inconsistencies on the corpus
