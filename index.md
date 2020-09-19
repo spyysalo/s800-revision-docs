@@ -58,7 +58,7 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 
 * Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
 * __crab__ is an infraorder containing 850 species, so it should be annotated only if higher taxonomic levels are annotated in general.
-* The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. "rice" mentioned as food or "tobacco" as cigarettes should still be annotated).
+* The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
 * Genus or higher level mentions (e.g. Arabidopsis, yeast) should only be annotated as the real taxinomic level (i.e. genus, phylum) and not as synonyms of species names. (e.g. this annotation should be removed in the reannotated version, or assigned the genus taxid) 
 
 ~~~ ann
@@ -97,18 +97,29 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 * Adjectival forms like __murine__, __bovine__ that map to a specific species should be annotated
 * Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
 * Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
-* Non-name mentions (e.g. man, woman) and species hints (e.g. patient should not be annotated)
+* __Viruses__ (or other taxonomic units) that have species level of entry as "unidentified" (e.g. "retrovirus" __taxid:31931__ ("unidentified retrovirus" equivalent: "retrovirus") or "adenovirus" __taxid:10535__ ("unidentified adenovirus" equivalent: "adenovirus")) should __NOT__ be annotated in the species level, but should be annotated at the __higher taxonomic rank__ that better describes them (e.g. family rank for Retroviridae, Adenoviridae etc)
+* Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
 * Model words like __SCID__ mouse should be excluded from annotations
 * Preprocessing errors (e.g. & amp;) should be fixed
-
+* __dengue__: dengue is synonym for dengue fever (disease), so it should not be annotated
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
-  * standalone _yeast_: OOS+taxid:147537 ("true yeast" subphylum) (Note: an even higher level may be included)
-  * _black yeast_: OOS+taxid:34395 ("black yeast" order)
-  * _budding yeast_: OOS+taxid:4892 ("budding yeasts" order)
-  * _fission yeast_: OOS+taxid:4894 ("fission yeasts" family)
-
+  * standalone _yeast_: __OOS__+__taxid:147537__ ("true yeast" subphylum) (Note: an even higher level may be included)
+  * _black yeast_: __OOS__+__taxid:34395__ ("black yeast" order)
+  * _budding yeast_: __OOS__+__taxid:4892__ ("budding yeasts" order)
+  * _fission yeast_: __OOS__+__taxid:4894__ ("fission yeasts" family)
+* Common names that should not be annotated in the species level:
+  * __fire ant__: several species of ants, tag as __OOS__ and __no taxid__ ( red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
+  * __sunflower__: __OOS__+__taxid:4231__ (__Helianthus__ genus)
+  * __galaxias__ : __OOS__+__taxid:51242__ (__Galaxias__ genus)
+  * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
+  * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
+* common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
+  * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__)
+  * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
+  * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
+  * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
 
 ## Experiments to automatically correct inconsistencies on the corpus
 
