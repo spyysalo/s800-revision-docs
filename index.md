@@ -103,6 +103,16 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
 * Model words like __SCID__ mouse should be excluded from annotations
 * Preprocessing errors (e.g. & amp;) should be fixed
+* _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
+
+~~~ann
+The splicing activity of the PRP8 intein from the B. dermatitidis, E. parva and P. brasiliensis species complex was demonstrated in a non-native protein context in Escherichia coli.
+T5	Species 51 65	B. dermatitidis
+T6	Species 68 75	E. parva
+T7	Species 81 96	P. brasiliensis
+T8	Species 165 180	Escherichia coli
+~~~
+
 * __dengue__: dengue is synonym for dengue fever (disease), so it should not be annotated
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
   * standalone _yeast_: __OOS__+__taxid:147537__ ("true yeast" subphylum) (Note: an even higher level may be included)
