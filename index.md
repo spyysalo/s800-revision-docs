@@ -107,10 +107,10 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 
 ~~~ann
 The splicing activity of the PRP8 intein from the B. dermatitidis, E. parva and P. brasiliensis species complex was demonstrated in a non-native protein context in Escherichia coli.
-T5	Species 51 65	B. dermatitidis
-T6	Species 68 75	E. parva
-T7	Species 81 96	P. brasiliensis
-T8	Species 165 180	Escherichia coli
+T5	Species 50 65	B. dermatitidis
+T6	Species 67 75	E. parva
+T7	Species 80 95	P. brasiliensis
+T8	Species 164 180	Escherichia coli
 ~~~
 
 * __dengue__: dengue is synonym for dengue fever (disease), so it should not be annotated
