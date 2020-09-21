@@ -56,18 +56,11 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 
 ## Additional guidelines for reannotation of the S800 corpus
 
-* Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
-* __crab__ is an infraorder containing 850 species, so it should be annotated only if higher taxonomic levels are annotated in general.
-* The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
-* Genus or higher level mentions (e.g. Arabidopsis, yeast) should only be annotated as the real taxinomic level (i.e. genus, phylum) and not as synonyms of species names. (e.g. this annotation should be removed in the reannotated version, or assigned the genus taxid) 
-
-~~~ ann
-The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
-T1 Species 35 46	Arabidopsis
-~~~
+### Span consistency guidelines
 
 * Do __not__ include the expressions _sp. nov._ and _gen. nov., sp. nov._ in the species name, since these are supposedly used only the first time a genus and/or a species/subspecies is described to denote that it's new, so they are not part of the scientific name and shouldn't be found anywhere else other than the first paper describing them.
-* Superscript T to denote type strain should __not__ be included in species' names.
+* An annotated span should __not__ end with _sp._ or _spp._
+* Superscript T to denote type strain should __not__ be included in species' names
 * The person's name should __not__ be included in the species name, especially when it is in parentheses. The non-parenthesized form is a bit more complex (at least in the example above _Pseudacteon tricuspis_ Borgmeier is a valid name shown as a synonym for _Pseudacteon tricuspis_ in NCBI taxonomy). For annotation consistency the suggestion is to __drop these names in all appearances__. (The confusion with subspecies can be avoided because of the capital letter at the start of the second word, e.g. _Ursus arctos arctos_ would be easy to distinguish from _Ursus arctos_ Linneaus and then drop the name for the latter.)
 * Do __not__ include common head nouns such as "plants" in annotation span
 * Annotate __nothing__ for anti-HCV, same for anti-rabbit. These are antibodies.
@@ -75,7 +68,32 @@ T1 Species 35 46	Arabidopsis
 * Do __not__ include nouns identifying levels of taxonomy such as "strain" in annotation span
 * Do __not__ include adjectival premodifiers such as "native" in annotation span
 * __Include serotypes__ in species names (they can be mapped back to unique taxids in NCBI taxonomy, [e.g.](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=90371))
-* "common name (scientific name)" mentions should be annotated as __two mentions__ e.g from 21054435:
+* Model words like __SCID__ mouse should be excluded from annotations
+* _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
+
+~~~ann
+The splicing activity of the PRP8 intein from the B. dermatitidis, E. parva and P. brasiliensis species complex was demonstrated in a non-native protein context in Escherichia coli.
+T5	Species 50 65	B. dermatitidis
+T6	Species 67 75	E. parva
+T7	Species 80 95	P. brasiliensis
+T8	Species 164 180	Escherichia coli
+~~~
+
+* _f. sp._ (forma specialis) should be included in the annotated mention (e.g. _Blumeria graminis f. sp. tritici_) 
+
+### general annotation guidelines
+
+* Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
+* __crab__ is an infraorder containing 850 species, so it should be annotated only if higher taxonomic levels are annotated in general.
+* The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
+* Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. this annotation should be removed in the reannotated version, or assigned the genus taxid) 
+
+~~~ ann
+The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
+T1 Species 35 46	Arabidopsis
+~~~
+
+* __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 
 ~~~ ann
 We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
@@ -85,7 +103,7 @@ T3 Species 222 233 Picea abies
 T4 Species 235 248 Norway spruce
 ~~~
 
-* name strain mentions should be annotated as one mention, e.g. from 20154326
+* _name strain_ mentions should be annotated as __one mention__, e.g. from 20154326
 
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
@@ -101,17 +119,6 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
-* Model words like __SCID__ mouse should be excluded from annotations
-* Preprocessing errors (e.g. & amp;) should be fixed
-* _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
-
-~~~ann
-The splicing activity of the PRP8 intein from the B. dermatitidis, E. parva and P. brasiliensis species complex was demonstrated in a non-native protein context in Escherichia coli.
-T5	Species 50 65	B. dermatitidis
-T6	Species 67 75	E. parva
-T7	Species 80 95	P. brasiliensis
-T8	Species 164 180	Escherichia coli
-~~~
 
 * __dengue__: dengue is synonym for dengue fever (disease), so it should not be annotated
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
@@ -130,6 +137,7 @@ T8	Species 164 180	Escherichia coli
   * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
+* Preprocessing errors (e.g. & amp;) should be fixed
 
 ## Experiments to automatically correct inconsistencies on the corpus
 
