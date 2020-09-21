@@ -11,6 +11,16 @@ The original S800 corpus data only annotated mentions that could be normalized t
 
 **Relevant commits**: [59fe5be](https://github.com/spyysalo/s800-revision-data/commit/59fe5be9fcf37ee0fd803336478559b5ea3f4692), [0165f52](https://github.com/spyysalo/s800-revision-data/commit/0165f52a50d3960ac2f43fbfd9b4d625f3c46c24)
 
+### 2. Revise annotated spans for boundary consistency
+
+The original evaluation using the S800 corpus data applied relaxed boundary matching criteria:
+
+> [...] we used flexible boundary matching of species names, meaning that taggers would receive a true positive if it produced a tag that overlapped with an annotated substring and had the correct assigned taxonomic identifier.
+
+Because of this matching criterion, the exact boundaries of annotated species mentions had little impact on the evaluation, and the annotation effort did not establish precise guidelines detailing which tokens should be included in annotated spans. Consequently, from the perspective of exact matching -- the criterion used e.g. by the popular `conlleval` evaluation script and most recent machine learning experiments on the corpus -- the boundaries of annotated mentions were inconsistently annotated in many places. To address this issue, we created detailed guidelines on how to determine annotation boundaries and made a revision pass addressing related issues in the data. This revision also included a focused review of the annotation of virus mentions, which had comparatively frequent annotation boundary issues.
+
+**Relevant commits**: [112f0b2](https://github.com/spyysalo/s800-revision-data/commit/112f0b2e256707aa94039bf8e4b3ae3b7bdaa7b6)
+
 ## Original Curator Guidelines for S800 corpus
 
 The annotation guidelines as described in the [original publication of the S800 corpus](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable)
