@@ -137,6 +137,7 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
+* In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the species interpretation should be preferred when it is not clear from context which is intended.
 * Preprocessing errors (e.g. & amp;) should be fixed
 
 ## Experiments to automatically correct inconsistencies on the corpus
