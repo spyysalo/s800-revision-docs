@@ -126,15 +126,15 @@ T2 Species 72 96 F. gelidilacus LMG 21477
 * Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
 * Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
 * __Viruses__ (or other taxonomic units) that have species level of entry as "unidentified" (e.g. "retrovirus" __taxid:31931__ ("unidentified retrovirus" equivalent: "retrovirus") or "adenovirus" __taxid:10535__ ("unidentified adenovirus" equivalent: "adenovirus")) should __NOT__ be annotated in the species level, but should be annotated at the __higher taxonomic rank__ that better describes them (e.g. family rank for Retroviridae, Adenoviridae etc)
- * "virus"/"viral" __taxid:10239__ "Viruses" _superkingdom
- * "retrovirus" __taxid:11632__ "Retroviridae" _family
- * "influenza virus" __taxid:11308__ "Orthomyxoviridae" _family
- * "herpesvirus" __taxid:10292__ "Herpesviridae" _family
- * "adenovirus" __taxid:10508__ "Adenoviridae" _family
- * "baculovirus" __taxid:10442__ "Baculoviridae" _family
- * "reovirus" __taxid:10880__ "Reoviridae" _family
- * "norovirus" __taxid:142786__ "Norovirus" _genus
- * "evola virus" __taxid:186536__ "Ebolavirus" _genus
+  * "virus"/"viral" __taxid:10239__ "Viruses" _superkingdom
+  * "retrovirus" __taxid:11632__ "Retroviridae" _family
+  * "influenza virus" __taxid:11308__ "Orthomyxoviridae" _family
+  * "herpesvirus" __taxid:10292__ "Herpesviridae" _family
+  * "adenovirus" __taxid:10508__ "Adenoviridae" _family
+  * "baculovirus" __taxid:10442__ "Baculoviridae" _family
+  * "reovirus" __taxid:10880__ "Reoviridae" _family
+  * "norovirus" __taxid:142786__ "Norovirus" _genus
+  * "evola virus" __taxid:186536__ "Ebolavirus" _genus
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
