@@ -21,6 +21,12 @@ Because of this matching criterion, the exact boundaries of annotated species me
 
 **Relevant commits**: [112f0b2](https://github.com/spyysalo/s800-revision-data/commit/112f0b2e256707aa94039bf8e4b3ae3b7bdaa7b6), [7012e42](https://github.com/spyysalo/s800-revision-data/commit/7012e42ac2c22579d51ba6766185961fc548b5a9)
 
+### 3. Separate strain mentions from species mentions
+
+The original S800 corpus annotation only involves a single annotated mention type (species) that is used to annotate mentions of species names as well as mentions of more specific names such as those of strains. In the revision, we introduced a separate `Strain` type and revised all strain name mention to use this type, also revising the spans of species annotation to exclude strain names when the two occurred together in text.
+
+**Relevant commits**: [5212baf](https://github.com/spyysalo/s800-revision-data/commit/5212baf17dd63670ef1f987c1fe9949582b3f98c)
+
 ## Original Curator Guidelines for S800 corpus
 
 The annotation guidelines as described in the [original publication of the S800 corpus](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable)
