@@ -135,6 +135,7 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * "reovirus" __OOS__+__taxid:10880__ "Reoviridae" _family_
   * "norovirus" __OOS__+__taxid:142786__ "Norovirus" _genus_
   * "ebola virus" __OOS__+__taxid:186536__ "Ebolavirus" _genus_
+  * "cytomegalovirus" __OOS__+__taxid:10358__ "Cytomegalovirus" _genus_
 * __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
 * __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
