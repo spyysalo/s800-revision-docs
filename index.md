@@ -134,17 +134,18 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * "baculovirus" __OOS__+__taxid:10442__ "Baculoviridae" _family_
   * "reovirus" __OOS__+__taxid:10880__ "Reoviridae" _family_
   * "norovirus" __OOS__+__taxid:142786__ "Norovirus" _genus_
-  * "evola virus" __OOS__+__taxid:186536__ "Ebolavirus" _genus_
+  * "ebola virus" __OOS__+__taxid:186536__ "Ebolavirus" _genus_
+* __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
+* __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
-
-* __dengue__: dengue is synonym for dengue fever (disease), so it should not be annotated
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
   * standalone _yeast_: __OOS__+__taxid:147537__ ("true yeast" subphylum) (Note: an even higher level may be included)
   * _black yeast_: __OOS__+__taxid:34395__ ("black yeast" order)
   * _budding yeast_: __OOS__+__taxid:4892__ ("budding yeasts" order)
   * _fission yeast_: __OOS__+__taxid:4894__ ("fission yeasts" family)
+  * _truffle_: __OOS__ + __taxid:36048__ (_Tuber_ genus)
 * Common names that should not be annotated in the species level:
   * __fire ant__: several species of ants, tag as __OOS__ and __no taxid__ ( red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
   * __sunflower__: __OOS__+__taxid:4231__ (__Helianthus__ genus)
@@ -152,11 +153,12 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
 * common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
-  * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__)
+  * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__: __OOS__ + __taxid:42414__ (__Sigmodon__ genus))
+  * __fruit fly__: synonym for _Drosophila melanogaster_ and __Drosophila__ genus and __Tephritidae__ family. Should be annotated as _Drosophila melanogaster_ (__taxid:7227__), unless explicitly referring to a different taxonomic unit
   * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
-* In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the species interpretation should be preferred when it is not clear from context which is intended.
+* In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the __species interpretation should be preferred__ when it is not clear from context which is intended.
 * Preprocessing errors (e.g. & amp;) should be fixed
 
 ## Experiments to automatically correct inconsistencies on the corpus
