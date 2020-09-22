@@ -19,7 +19,7 @@ The original evaluation using the S800 corpus data applied relaxed boundary matc
 
 Because of this matching criterion, the exact boundaries of annotated species mentions had little impact on the evaluation, and the annotation effort did not establish precise guidelines detailing which tokens should be included in annotated spans. Consequently, from the perspective of exact matching -- the criterion used e.g. by the popular `conlleval` evaluation script and most recent machine learning experiments on the corpus -- the boundaries of annotated mentions were inconsistently annotated in many places. To address this issue, we created detailed guidelines on how to determine annotation boundaries and made a revision pass addressing related issues in the data. This revision also included a focused review of the annotation of virus mentions, which had comparatively frequent annotation boundary issues.
 
-**Relevant commits**: [112f0b2](https://github.com/spyysalo/s800-revision-data/commit/112f0b2e256707aa94039bf8e4b3ae3b7bdaa7b6)
+**Relevant commits**: [112f0b2](https://github.com/spyysalo/s800-revision-data/commit/112f0b2e256707aa94039bf8e4b3ae3b7bdaa7b6), [7012e42](https://github.com/spyysalo/s800-revision-data/commit/7012e42ac2c22579d51ba6766185961fc548b5a9)
 
 ## Original Curator Guidelines for S800 corpus
 
