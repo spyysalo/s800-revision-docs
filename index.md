@@ -97,7 +97,7 @@ T8	Species 164 180	Escherichia coli
 * Do __not__ include nouns identifying levels of taxonomy in annotation spans. For example, the words __strain__, __serotype__, __serovar__, and __serogroup__ should be excluded from the spans of annotated _Strain_ mentions. e.g from 20154326
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity ...
-T1 Species 7 14 GSW-R14
+T1 Strain 7 14 GSW-R14
 ~~~
 
 ### general annotation guidelines
@@ -132,8 +132,8 @@ T4 Species 235 248 Norway spruce
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
 T1 Species 7 14 GSW-R14
-T2 Species 72 86 F. gelidilacus LMG 21477
-T3 Strain 87 96 F. gelidilacus LMG 21477
+T2 Species 72 86 F. gelidilacus
+T3 Strain 87 96 LMG 21477
 ~~~
 
 #### Viruses
