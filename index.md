@@ -79,9 +79,7 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 * Superscript T to denote type strain should __not__ be included in species' names
 * The person's name should __not__ be included in the species name, especially when it is in parentheses. The non-parenthesized form is a bit more complex (at least in the example above _Pseudacteon tricuspis_ Borgmeier is a valid name shown as a synonym for _Pseudacteon tricuspis_ in NCBI taxonomy). For annotation consistency the suggestion is to __drop these names in all appearances__. (The confusion with subspecies can be avoided because of the capital letter at the start of the second word, e.g. _Ursus arctos arctos_ would be easy to distinguish from _Ursus arctos_ Linneaus and then drop the name for the latter.)
 * Do __not__ include common head nouns such as "plants" in annotation span
-* Annotate __nothing__ for anti-HCV, same for anti-rabbit. These are antibodies.
-* Annotate the species name in cases like __Influenza__ vaccine
-* Do __not__ include nouns identifying levels of taxonomy such as "strain" in annotation span
+
 * Do __not__ include adjectival premodifiers such as "native" in annotation span
 * __Include serotypes__ in species names (they can be mapped back to unique taxids in NCBI taxonomy, [e.g.](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=90371))
 * Model words like __SCID__ mouse should be excluded from annotations
@@ -96,17 +94,24 @@ T8	Species 164 180	Escherichia coli
 ~~~
 
 * _f. sp._ (forma specialis) should be included in the annotated mention (e.g. _Blumeria graminis f. sp. tritici_) 
+* Do __not__ include nouns identifying levels of taxonomy in annotation spans. For example, the words __strain__, __serotype__, __serovar__, and __serogroup__ should be excluded from the spans of annotated _Strain_ mentions. e.g from 20154326
+~~~ ann
+Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity ...
+T1 Species 7 14 GSW-R14
+~~~
 
 ### general annotation guidelines
 
-* Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
-* __crab__ is an infraorder containing 850 species, so it should be annotated only if higher taxonomic levels are annotated in general.
+* Preprocessing errors (e.g. & amp;) should be fixed
+* Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
+* Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
-* Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. this annotation should be removed in the reannotated version, or assigned the genus taxid) 
+* Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. _Arabidopsis_ should be annotated as __OOS__ and assigned the genus __taxid:3701__) 
 
 ~~~ ann
 The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
-T1 Species 35 46	Arabidopsis
+T1 Out-of-scope 35 46	Arabidopsis
+N1	Reference T1 Taxonomy:3701	Arabidopsis
 ~~~
 
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
@@ -119,18 +124,20 @@ T3 Species 222 233 Picea abies
 T4 Species 235 248 Norway spruce
 ~~~
 
-* _name strain_ mentions should be annotated as __one mention__, e.g. from 20154326
+#### Strains
+
+* Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances as type __Strain__.
+* _name strain_ mentions should be annotated as __two mentions__ of __Species__+__Strain__, e.g. from 20154326
 
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
 T1 Species 7 14 GSW-R14
-T2 Species 72 96 F. gelidilacus LMG 21477
+T2 Species 72 86 F. gelidilacus LMG 21477
+T3 Strain 87 96 F. gelidilacus LMG 21477
 ~~~
 
-* Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances.
-* Adjectival forms like __murine__, __bovine__ that map to a specific species should be annotated
-* Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
-* Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
+#### Viruses
+
 * __Viruses__ (or other taxonomic units) that have species level of entry as "unidentified" (e.g. "retrovirus" __taxid:31931__ ("unidentified retrovirus" equivalent: "retrovirus") or "adenovirus" __taxid:10535__ ("unidentified adenovirus" equivalent: "adenovirus")) should __NOT__ be annotated in the species level, but should be annotated at the __higher taxonomic rank__ that better describes them (e.g. family rank for Retroviridae, Adenoviridae etc)
   * "virus"/"viral" __OOS__+__taxid:10239__ "Viruses" _superkingdom_
   * "retrovirus" __OOS__+__taxid:11632__ "Retroviridae" _family_
@@ -144,8 +151,10 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * "cytomegalovirus" __OOS__+__taxid:10358__ "Cytomegalovirus" _genus_
 * __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
 * __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
-* Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
-* Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
+* __influenza__: influenza is synonym for the flu (disease), annotate as  __OOS__ + __no taxid__ unless _influenza X virus_ is mentioned when it should be annotated as _Species_
+
+#### Yeasts
+
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
   * standalone _yeast_: __OOS__+__taxid:147537__ ("true yeast" subphylum) (Note: an even higher level may be included)
@@ -153,20 +162,32 @@ T2 Species 72 96 F. gelidilacus LMG 21477
   * _budding yeast_: __OOS__+__taxid:4892__ ("budding yeasts" order)
   * _fission yeast_: __OOS__+__taxid:4894__ ("fission yeasts" family)
   * _truffle_: __OOS__ + __taxid:36048__ (_Tuber_ genus)
+
+#### Common names
+* In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the __species interpretation should be preferred__ when it is not clear from context which is intended.
+* Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
 * Common names that should not be annotated in the species level:
   * __fire ant__: several species of ants, tag as __OOS__ and __no taxid__ ( red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
   * __sunflower__: __OOS__+__taxid:4231__ (__Helianthus__ genus)
   * __galaxias__ : __OOS__+__taxid:51242__ (__Galaxias__ genus)
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
-* common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
+  * __crab__: infraorder containing 850 species, so it should be annotated as __OOS__ + __taxid:6752__ (__Brachyura__ infraorder)
+* Common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
   * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__: __OOS__ + __taxid:42414__ (__Sigmodon__ genus))
   * __fruit fly__: synonym for _Drosophila melanogaster_ and __Drosophila__ genus and __Tephritidae__ family. Should be annotated as _Drosophila melanogaster_ (__taxid:7227__), unless explicitly referring to a different taxonomic unit
   * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
-* In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the __species interpretation should be preferred__ when it is not clear from context which is intended.
-* Preprocessing errors (e.g. & amp;) should be fixed
+
+
+### Guidelines pending to be applied/decided upon
+
+* Adjectival forms like __murine__, __bovine__ that map to a specific species should be annotated
+* Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
+* Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
+* Annotate __nothing__ for anti-HCV, same for anti-rabbit. These are antibodies.
+* Annotate young animals (e.g. chicks, calfs etc). -- Contradicting with rule about annotating child/children
 
 ## Experiments to automatically correct inconsistencies on the corpus
 
