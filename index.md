@@ -105,8 +105,7 @@ T8	Species 164 180	Escherichia coli
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity ...
 T1 Strain 7 14 GSW-R14
 ~~~
-* Annotate antibodies e.g anti-__HCV__ with species annotation for the organism (__HCV__) and Note: _"anti-" prefix_
-
+* Annotate antibodies e.g __anti-HCV__ with species annotation for the organism (__HCV__) and _Note: "anti-" prefix_
 
 ### general annotation guidelines
 
