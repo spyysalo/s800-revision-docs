@@ -87,7 +87,6 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 * Do __not__ include common head nouns such as "plants" in annotation span
 
 * Do __not__ include adjectival premodifiers such as "native" in annotation span
-* __Include serotypes__ in species names (they can be mapped back to unique taxids in NCBI taxonomy, [e.g.](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=90371))
 * Model words like __SCID__ mouse should be excluded from annotations
 * _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
 
