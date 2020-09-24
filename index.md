@@ -105,10 +105,15 @@ T8	Species 164 180	Escherichia coli
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity ...
 T1 Strain 7 14 GSW-R14
 ~~~
+* Annotate antibodies e.g anti-__HCV__ with species annotation for the organism (__HCV__) and Note: _"anti-" prefix_
+
 
 ### general annotation guidelines
 
 * Preprocessing errors (e.g. & amp;) should be fixed
+* Adjectival forms like __murine__ (__taxid:10090__), __bovine__ (__taxid:9913__), __pneumococcal__ (__taxid:1313__) that map to a specific species should be annotated as such
+* Adjectival forms of Phyla (e.g. __cyanobacterial__: __taxid:1117__) can only be annotated as __OOS__ or not be annotated at all
+* Adjectival forms of __Kingdoms__ (e.g. __viral__, __bacterial__) can only be annotated as __OOS__ or not be annotated at all
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
@@ -120,6 +125,15 @@ T1 Out-of-scope 35 46	Arabidopsis
 N1	Reference T1 Taxonomy:3701	Arabidopsis
 ~~~
 
+* Former _Species_ annotations that belong to the following taxinomic ranks: _Class_, _Order_, _Family_ and _Genus_ have been annotated as the latter in the corpus. Ranks higher than _Class_ (e.g. _Phylum_, _Kingdom_) should receive an _Out-of-scope_ annotation (NCBI Taxonomy Ranking adopted from [Schoch, _et. al_, 2020](https://academic.oup.com/database/article/doi/10.1093/database/baaa062/5881509#206172258)
+* For annotations above _Species_ only the "coarse" ranks should be considered, thus mapping mentions at fine-grained levels to their coarse equivalents, e.g. _Subgenus_ -> _Genus_, _Subfamily_ -> _Family_ etc. Some examples are given below:
+  * _Subfamily_: _Plusiinae_ --> __Family__
+  * _Superfamily_: _butterflies_ --> __Family__
+  * _Infraorder_: _snakes_ --> __Order__
+  * _Infraorder_: _planthoppers_ --> __Order__
+  * _Suborder_: _true bugs_ --> __Order__
+  * _Suborder_: _Heteroptera_ --> __Order__
+  * _Infraorder_: _dragonflies_ --> __Order__
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 
 ~~~ ann
@@ -177,6 +191,7 @@ T3 Strain 87 96 LMG 21477
   * __sunflower__: __OOS__+__taxid:4231__ (__Helianthus__ genus)
   * __galaxias__ : __OOS__+__taxid:51242__ (__Galaxias__ genus)
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
+  * __leafminer__: insects that eat the tissue of plants, annotate as __OOS__ + __no taxid__
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
   * __crab__: infraorder containing 850 species, so it should be annotated as __OOS__ + __taxid:6752__ (__Brachyura__ infraorder)
 * Common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
@@ -189,10 +204,6 @@ T3 Strain 87 96 LMG 21477
 
 ### Guidelines pending to be applied/decided upon
 
-* Adjectival forms like __murine__, __bovine__ that map to a specific species should be annotated
-* Adjectival forms like __pneumococcal__, __cyanobacterial__ should only be annotated if we decide to annotate above species level
-* Adjectival forms of kingdoms of life should __not__ be annotated e.g. __viral__, __bacterial__
-* Annotate __nothing__ for anti-HCV, same for anti-rabbit. These are antibodies.
 * Annotate young animals (e.g. chicks, calfs etc). -- Contradicting with rule about annotating child/children
 
 ## Experiments to automatically correct inconsistencies on the corpus
