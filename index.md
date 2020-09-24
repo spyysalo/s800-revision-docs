@@ -25,7 +25,13 @@ Because of this matching criterion, the exact boundaries of annotated species me
 
 The original S800 corpus annotation only involves a single annotated mention type (species) that is used to annotate mentions of species names as well as mentions of more specific names such as those of strains. In the revision, we introduced a separate `Strain` type and revised all strain name mention to use this type, also revising the spans of species annotation to exclude strain names when the two occurred together in text.
 
-**Relevant commits**: [5212baf](https://github.com/spyysalo/s800-revision-data/commit/5212baf17dd63670ef1f987c1fe9949582b3f98c)
+**Relevant commits**: [5212baf](https://github.com/spyysalo/s800-revision-data/commit/5212baf17dd63670ef1f987c1fe9949582b3f98c), [489fdf1](https://github.com/spyysalo/s800-revision-data/commit/489fdf16cb85c8b90aeff7acd19aa9cc5905440e)
+
+### 4. Introduce annotation for upper taxonomic ranks
+
+The original S800 corpus annotation included partial annotation for mentions of names at taxonomic ranks above species, in particular in a number of cases where these names were used in an imprecise way to refer to species (e.g. _Drosophila_ for _Drosophila melanogaster_). As the initial revision step addressing annotation consistency had marked these as `Out-of-scope`, the coverage of the revised annotation was in some aspects reduced from that of the original corpus. In this revision step, annotation for mentions of names at taxonomic ranks above species was reintroduced in a systematic way, adding e.g. `Genus` as a distinct annotated type.
+
+**Relevant commits**: [20ccfb7](https://github.com/spyysalo/s800-revision-data/commit/20ccfb7eddefb8d675fb9405786efb3e88c4d6b9)
 
 ## Original Curator Guidelines for S800 corpus
 
