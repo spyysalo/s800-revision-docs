@@ -131,6 +131,7 @@ N1	Reference T1 Taxonomy:3701	Arabidopsis
   * _Suborder_: _true bugs_ --> __Order__
   * _Suborder_: _Heteroptera_ --> __Order__
   * _Infraorder_: _dragonflies_ --> __Order__
+* _Tribe_ and _Subtribe_ are also normalized to __Family__
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 
 ~~~ ann
