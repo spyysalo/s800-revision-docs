@@ -85,7 +85,6 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 * Superscript T to denote type strain should __not__ be included in species' names
 * The person's name should __not__ be included in the species name, especially when it is in parentheses. The non-parenthesized form is a bit more complex (at least in the example above _Pseudacteon tricuspis_ Borgmeier is a valid name shown as a synonym for _Pseudacteon tricuspis_ in NCBI taxonomy). For annotation consistency the suggestion is to __drop these names in all appearances__. (The confusion with subspecies can be avoided because of the capital letter at the start of the second word, e.g. _Ursus arctos arctos_ would be easy to distinguish from _Ursus arctos_ Linneaus and then drop the name for the latter.)
 * Do __not__ include common head nouns such as "plants" in annotation span
-
 * Do __not__ include adjectival premodifiers such as "native" in annotation span
 * Model words like __SCID__ mouse should be excluded from annotations
 * _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
@@ -158,15 +157,15 @@ T3 Strain 87 96 LMG 21477
 
 * __Viruses__ (or other taxonomic units) that have species level of entry as "unidentified" (e.g. "retrovirus" __taxid:31931__ ("unidentified retrovirus" equivalent: "retrovirus") or "adenovirus" __taxid:10535__ ("unidentified adenovirus" equivalent: "adenovirus")) should __NOT__ be annotated in the species level, but should be annotated at the __higher taxonomic rank__ that better describes them (e.g. family rank for Retroviridae, Adenoviridae etc)
   * "virus"/"viral" __OOS__+__taxid:10239__ "Viruses" _superkingdom_
-  * "retrovirus" __OOS__+__taxid:11632__ "Retroviridae" _family_
-  * "influenza virus" __OOS__+__taxid:11308__ "Orthomyxoviridae" _family_
-  * "herpesvirus" __OOS__+__taxid:10292__ "Herpesviridae" _family_
-  * "adenovirus" __OOS__+__taxid:10508__ "Adenoviridae" _family_
-  * "baculovirus" __OOS__+__taxid:10442__ "Baculoviridae" _family_
-  * "reovirus" __OOS__+__taxid:10880__ "Reoviridae" _family_
-  * "norovirus" __OOS__+__taxid:142786__ "Norovirus" _genus_
-  * "ebola virus" __OOS__+__taxid:186536__ "Ebolavirus" _genus_
-  * "cytomegalovirus" __OOS__+__taxid:10358__ "Cytomegalovirus" _genus_
+  * "retrovirus" __Family__+__taxid:11632__ "Retroviridae" _family_
+  * "influenza virus" __Family__+__taxid:11308__ "Orthomyxoviridae" _family_
+  * "herpesvirus" __Family__+__taxid:10292__ "Herpesviridae" _family_
+  * "adenovirus" __Family__+__taxid:10508__ "Adenoviridae" _family_
+  * "baculovirus" __Family__+__taxid:10442__ "Baculoviridae" _family_
+  * "reovirus" __Family__+__taxid:10880__ "Reoviridae" _family_
+  * "norovirus" __Genus__+__taxid:142786__ "Norovirus" _genus_
+  * "ebola virus" __Genus__+__taxid:186536__ "Ebolavirus" _genus_
+  * "cytomegalovirus" __Genus__+__taxid:10358__ "Cytomegalovirus" _genus_
 * __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
 * __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
 * __influenza__: influenza is synonym for the flu (disease), annotate as  __OOS__ + __no taxid__ unless _influenza X virus_ is mentioned when it should be annotated as _Species_
@@ -176,24 +175,25 @@ T3 Strain 87 96 LMG 21477
 * Discontinuous entities should be annotated as such (e.g. http://ann.turkunlp.org:8088/index.xhtml#/S800/20933017?focus=610~643)
 * all text spans including "yeast" should have an __Out-of-scope__ annotation if the taxonomy level is higher than Species:
   * standalone _yeast_: __OOS__+__taxid:147537__ ("true yeast" subphylum) (Note: an even higher level may be included)
-  * _black yeast_: __OOS__+__taxid:34395__ ("black yeast" order)
-  * _budding yeast_: __OOS__+__taxid:4892__ ("budding yeasts" order)
-  * _fission yeast_: __OOS__+__taxid:4894__ ("fission yeasts" family)
-  * _truffle_: __OOS__ + __taxid:36048__ (_Tuber_ genus)
+  * _black yeast_: __Order__+__taxid:34395__ ("black yeast" order)
+  * _budding yeast_: __Order__+__taxid:4892__ ("budding yeasts" order)
+  * _fission yeast_: __Family__+__taxid:4894__ ("fission yeasts" family)
+  * _truffle_: __Genus__ + __taxid:36048__ (_Tuber_ genus)
 
 #### Common names
 * In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the __species interpretation should be preferred__ when it is not clear from context which is intended.
 * Common names like __human__, __goat__, __horse__, and __rats__ should be __always__ annotated.
 * Common names that should not be annotated in the species level:
-  * __fire ant__: several species of ants, tag as __OOS__ and __no taxid__ ( red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
-  * __sunflower__: __OOS__+__taxid:4231__ (__Helianthus__ genus)
-  * __galaxias__ : __OOS__+__taxid:51242__ (__Galaxias__ genus)
+  * __fire ant__: __Genus__ and __taxid:13685__ (__Solenopsis__); Note: red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
+  * __ant(s)__: __Family__+__taxid:36668__ (__Formicidae__)
+  * __sunflower__: __Genus__+__taxid:4231__ (__Helianthus__)
+  * __galaxias__ : __Genus__+__taxid:51242__ (__Galaxias__)
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
   * __leafminer__: insects that eat the tissue of plants, annotate as __OOS__ + __no taxid__
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
-  * __crab__: infraorder containing 850 species, so it should be annotated as __OOS__ + __taxid:6752__ (__Brachyura__ infraorder)
+  * __crab__: infraorder containing 850 species, so it should be annotated as __Order__ + __taxid:6752__ (__Brachyura__)
 * Common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
-  * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__: __OOS__ + __taxid:42414__ (__Sigmodon__ genus))
+  * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__: __Genus__ + __taxid:42414__ (__Sigmodon__))
   * __fruit fly__: synonym for _Drosophila melanogaster_ and __Drosophila__ genus and __Tephritidae__ family. Should be annotated as _Drosophila melanogaster_ (__taxid:7227__), unless explicitly referring to a different taxonomic unit
   * __bee__: synonym for _Apis mellifera_, and __Apoidea__ superfamily. Should be annotated as _Apis mellifera_ (__taxid:7460__), unless explicitly referring to a different taxonomic unit (e.g. __bumble bee__)
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
