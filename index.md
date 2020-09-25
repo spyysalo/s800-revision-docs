@@ -115,11 +115,11 @@ T1 Strain 7 14 GSW-R14
 * Introduce a flag-attribute for __cannot be normalized__ for cases that are not full names (but only understandable as references in context) e.g. _strips of types O, A and Asia 1_
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
-* Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. _Arabidopsis_ should be annotated as __OOS__ and assigned the genus __taxid:3701__) 
+* Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. _Arabidopsis_ should be annotated as `Genus` and assigned the genus __taxid:3701__) 
 
 ~~~ ann
 The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
-T1 Out-of-scope 35 46	Arabidopsis
+T1 Genus 35 46	Arabidopsis
 N1	Reference T1 Taxonomy:3701	Arabidopsis
 ~~~
 
