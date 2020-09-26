@@ -142,6 +142,12 @@ T3 Species 222 233 Picea abies
 T4 Species 235 248 Norway spruce
 ~~~
 
+* Forms identified by place names, like __ecotype__, are not annotated.
+~~~ ann
+For investigating cadmium uptake, we incubated protoplasts obtained from leaves of Thlaspi caerulescens (Ganges ecotype) with a Cd-specific fluorescent dye.
+T1 Species 84 104 Thlaspi caerulescens
+~~~
+
 #### Strains
 
 * Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances as type __Strain__.
