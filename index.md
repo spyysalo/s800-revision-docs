@@ -88,7 +88,6 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 * Do __not__ include adjectival premodifiers such as "native" in annotation span
 * Model words like __SCID__ mouse should be excluded from annotations
 * _"species complex"_ should __not__ be part of a species name, e.g. from 20682355
-
 ~~~ann
 The splicing activity of the PRP8 intein from the B. dermatitidis, E. parva and P. brasiliensis species complex was demonstrated in a non-native protein context in Escherichia coli.
 T5	Species 50 65	B. dermatitidis
@@ -115,13 +114,11 @@ T1 Strain 7 14 GSW-R14
 * Non-name mentions (e.g. __woman__) and species clues (e.g. __patients, children, men, women__) should not be annotated. This includes the non-name mention __man__ which should not be annotated as a synonym for _Homo sapiens_ (__taxid: 9606__)
 * The role in which common species names are mentioned should __not__ be taken into account and all species names mentions should be annotated (e.g. _rice_ mentioned as food or _tobacco_ as cigarettes should still be annotated).
 * Genus or higher level mentions (e.g. _Arabidopsis_, _yeast_) should only be annotated as the real taxinomic level (i.e. _genus_, _phylum_) and not as synonyms of species names. (e.g. _Arabidopsis_ should be annotated as `Genus` and assigned the genus __taxid:3701__) 
-
 ~~~ ann
 The second face of a known player: Arabidopsis silencing suppressor AtXRN4 acts organ-specifically
 T1 Genus 35 46	Arabidopsis
 N1	Reference T1 Taxonomy:3701	Arabidopsis
 ~~~
-
 * Former _Species_ annotations that belong to the following taxinomic ranks: _Class_, _Order_, _Family_ and _Genus_ have been annotated as the latter in the corpus. Ranks higher than _Class_ (e.g. _Phylum_, _Kingdom_) should receive an _Out-of-scope_ annotation (NCBI Taxonomy Ranking adopted from [Schoch, _et. al_, 2020](https://academic.oup.com/database/article/doi/10.1093/database/baaa062/5881509#206172258)
 * For annotations above _Species_ only the "coarse" ranks should be considered, thus mapping mentions at fine-grained levels to their coarse equivalents, e.g. _Subgenus_ -> _Genus_, _Subfamily_ -> _Family_ etc. Some examples are given below:
   * _Subfamily_: _Plusiinae_ --> __Family__
@@ -133,7 +130,6 @@ N1	Reference T1 Taxonomy:3701	Arabidopsis
   * _Infraorder_: _dragonflies_ --> __Order__
 * _Tribe_ and _Subtribe_ are also normalized to __Family__
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
-
 ~~~ ann
 We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
 T1 Species 174 189 Fagus sylvatica
@@ -141,18 +137,16 @@ T2 Species 191 205 European beech
 T3 Species 222 233 Picea abies
 T4 Species 235 248 Norway spruce
 ~~~
-
 * Forms identified by place names, like __ecotype__, are not annotated.
 ~~~ ann
 For investigating cadmium uptake, we incubated protoplasts obtained from leaves of Thlaspi caerulescens (Ganges ecotype) with a Cd-specific fluorescent dye.
-T1 Species 84 104 Thlaspi caerulescens
+T1 Species 83 103 Thlaspi caerulescens
 ~~~
 
 #### Strains
 
 * Strain aliases such as __CC-12301__(T) (=__DSM 45298__(T) =__CCM 7727__(T)) should be annotated in all instances as type __Strain__.
 * _name strain_ mentions should be annotated as __two mentions__ of __Species__+__Strain__, e.g. from 20154326
-
 ~~~ ann
 Strain GSW-R14(T) exhibited 97.6 % 16S rRNA gene sequence similarity to F. gelidilacus LMG 21477(T) and similarities of 91.2-95.2 % to other members of the genus Flavobacterium
 T1 Species 7 14 GSW-R14
