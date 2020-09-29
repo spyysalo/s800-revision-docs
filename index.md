@@ -142,6 +142,23 @@ T4 Species 235 248 Norway spruce
 For investigating cadmium uptake, we incubated protoplasts obtained from leaves of Thlaspi caerulescens (Ganges ecotype) with a Cd-specific fluorescent dye.
 T1 Species 83 103 Thlaspi caerulescens
 ~~~
+* Cultivars should be annotated as __OOS__
+~~~ ann
+The physiological traits underlying the apparent drought resistance of 'Tomatiga de Ramellet' (TR) cultivars.
+T1 Out-of-scope 72 92 Tomatiga de Ramellet
+~~~
+* Non-taxonomic groupings such as __Gram-positive/negative bacteria__, __marine bacteria__ or __enteric bacteria__ should not be annotated. e.g.
+~~~ann
+The redox-sensitive transcription factor SoxR in enteric bacteria senses and regulates the cellular response to superoxide and nitric oxide.
+~~~
+* The last rule includes cases like the following from 21037015
+~~~ ann
+Oscillochloris trichoides is a mesophilic, filamentous, photoautotrophic, nonsulfur, diazotrophic bacterium which is capable of carbon dioxide fixation via the reductive pentose phosphate cycle and possesses no assimilative sulfate reduction.
+T1 Species 0 25 Oscillochloris trichoides
+~~~
+* __tree__ and __bush__ are non-taxonomic mentions and thus not annotated
+* Species names also in noun phrase premodifier positions (e.g. __Arabidopsis__ EDR1, __Aspergillus nidulans__ cells) also in cases where they appear as part of the name of an entity of a non-organism type (e.g. __human__ epidermal growth factor receptor 2 (HER2)) are annotated.
+* Abbreviations are marked if the abbreviation stands for an organism mention in scope of the annotation, but not if the full form merely includes an organism mention e.g. in modifier position. For example, the __H__ in __HER2__ is not annotated despite it standing for __human__.
 
 #### Strains
 
@@ -170,6 +187,7 @@ T3 Strain 87 96 LMG 21477
 * __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
 * __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
 * __influenza__: influenza is synonym for the flu (disease), annotate as  __OOS__ + __no taxid__ unless _influenza X virus_ is mentioned when it should be annotated as _Species_
+* __human adenovirus__ (or similar cases): when a mention cannot be normalized in an "identified" virus species it should be annotated e.g. as __Species__+__taxid:9606__ (_Homo sapiens_) for __human__ and __Family__+__taxid:10508__ (_Adenoviridae_) for _adenovirus
 
 #### Yeasts
 
@@ -180,6 +198,11 @@ T3 Strain 87 96 LMG 21477
   * _budding yeast_: __Order__+__taxid:4892__ ("budding yeasts" order)
   * _fission yeast_: __Family__+__taxid:4894__ ("fission yeasts" family)
   * _truffle_: __Genus__ + __taxid:36048__ (_Tuber_ genus)
+  
+#### Amoebae
+* All __amoebae__ instances have been revised to resolve confusion of non-taxonomical expression __amoebae__ (type of cell or unicellular organism which has the ability to alter its shape), of __taxid:554915__ (__OOS__: _Clade: Amoebozoa_), and __taxid:55774__ (__Genus__: _Amoebae_). Most of the cases were non-taxonomical expressions (__OOS__ + __no taxid__)
+  * __testate amoebae__: very common combination of mentions, which means _shelled amoebae_, which explains the form of microorganism(s): __OOS__ + __no taxid__
+  * Interesting article [21112814](https://pubmed.ncbi.nlm.nih.gov/21112814/), where both _non-taxonomical_ and _Genus_ amoebae are mentioned (only one real "amoebae" Genus in the corpus)
 
 #### Common names
 * In general, when a species and a higher-level entry in the taxonomy (e.g. genus) share a common name or synonym, the __species interpretation should be preferred__ when it is not clear from context which is intended.
@@ -187,10 +210,16 @@ T3 Strain 87 96 LMG 21477
 * Common names that should not be annotated in the species level:
   * __fire ant__: __Genus__ and __taxid:13685__ (__Solenopsis__); Note: red fire ant, little fire ant, black fire ant etc should be tagged as the corresponding species)
   * __ant(s)__: __Family__+__taxid:36668__ (__Formicidae__)
+  * __insect(s)__: when standalone assign __Class__+__taxid:50557__ (__Insecta__)
   * __sunflower__: __Genus__+__taxid:4231__ (__Helianthus__)
   * __galaxias__ : __Genus__+__taxid:51242__ (__Galaxias__)
+  * __mite__: __Class__+__taxid:6933__ (__Acari__ subclass)
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
   * __leafminer__: insects that eat the tissue of plants, annotate as __OOS__ + __no taxid__
+  * __fishes__: __OOS__ (Clade-like concept, non-tetrapoda vertebrata)
+  * __bug__: __OOS__
+  * __mirid bug__: __Family__+__taxid:30084__ (__Miridae__)
+  * __clownfish__: __Family__+__taxid:30863__ (__Pomacentridae__)
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
   * __crab__: infraorder containing 850 species, so it should be annotated as __Order__ + __taxid:6752__ (__Brachyura__)
 * Common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
@@ -200,10 +229,125 @@ T3 Strain 87 96 LMG 21477
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
 
+#### Very specific distinctions
+* 4 mentions of "astomes" in this document [21398102](http://ann.turkunlp.org:8088/index.xhtml#/S800/21398102?focus=sent~9) are __OOS__
+* Astome ciliates in this document [21398102](http://ann.turkunlp.org:8088/index.xhtml#/S800/21398102?focus=T15) are also __OOS__
+* But some types of astome ciliates had been established as an order _Astomatida_
+* FGSC should not be annotated as it refers to something that's out of scope, namely Fusarium graminearum complex [22004876](http://ann.turkunlp.org:8088/index.xhtml#/S800/22004876?focus=T2)
+* Mentions of carnivores in [21323921](http://ann.turkunlp.org:8088/index.xhtml#/S800/21323921) have been annotated as __OOS__, interpreting these to refer generally to meat-eating animals rather than the mammalian order __Carnivora__
+* __human__ and __primates__ in a context of __non-human primates__ are annotated as __two mentions__ [21295520](http://ann.turkunlp.org:8088/index.xhtml#/S800/21295520?focus=T9)
 
 ### Guidelines pending to be applied/decided upon
 
+* mutant species annotation [21054438](http://ann.turkunlp.org:8088/index.xhtml#/S800/21054438?focus=16~22)
+* japonica rice in [20946420](http://ann.turkunlp.org:8088/index.xhtml#/S800/20946420?focus=T10)
 * Annotate young animals (e.g. chicks, calfs etc). -- Contradicting with rule about annotating child/children
+* phage names [21097633](http://ann.turkunlp.org:8088/index.xhtml#/S800/21097633?focus=93~97)
+* biotypes
+* plant clones
+* vole
+
+## Corpus expansion (S1000)
+
+### Positive classes
+
+* Use UniProt/Swiss-Prot annotations to identify categories of articles aligning with the original S800 categories that mention at least one genus or species that is not already annotated in S800. This will also include all genera of species in the S800 corpus which will be retrieved from mapping of species to their parental ranks in NCBI taxonomy. 
+* Process for filtering out "known" species/genera, to get the unique taxids and their corresponding NCBI Taxonomy scientific names from the current iteration of the annotation
+<pre><code>
+wget 'http://ann.turkunlp.org:8088/ajax.cgi?action=downloadCollection&collection=%2FS800%2F&include_conf=1&protocol=1' -O S800.tar.gz
+tar xvzf S800.tar.gz
+cat S800/*.ann | egrep '^N' | cut -f 2 | perl -pe 's/^Reference T\d+ Taxonomy:// or die' | sort -n | uniq > unique-taxids.txt
+wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+tar xvzf taxdump.tar.gz
+cut -f 1,3,7 names.dmp | egrep $'\t''scientific name' | cut -f 1,2 > scientific_names.tsv
+cut -f 1,5 nodes.dmp > ranks.tsv
+paste scientific_names.tsv ranks.tsv | cut -f 1,2,4 > scientific_names_and_ranks.tsv
+egrep '('$(tr '\n' '|' < unique-taxids.txt | perl -pe 's/\|$//')')'$'\t' scientific_names_and_ranks.tsv > unique_annotated_names_and_ranks.tsv
+</pre></code>
+* Four taxids were in the data that were not found in this release of the taxonomy 27380, 67004, 891394, and 891400. These have been included in the final list (`unique_annotated_names_and_ranks.tsv`)
+* Filter down to species and genus
+<pre><code>
+#get species and genera from that list
+egrep "species$|genus$" unique_annotated_names_and_ranks.tsv > unique_annotated_names_and_ranks_only_species_genus.tsv
+#get species mentions from the above list
+egrep "species$" unique_annotated_names_and_ranks.tsv > unique_annotated_names_and_ranks_only_species.tsv
+</pre></code>
+* The mapping between categories in [S800 publication](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable) and NCBI Taxonomy
+<pre><code>
+Category	    NCBI Taxonomy Name (NCBI TaxID)
+Protistology	All eukaryotes that are not Metazoa (includes Insects), Fungi* and Plants**
+Entomology	  Insecta (50557) - Rank: Class
+Virology	    Viruses (10239) - Rank: Superkingdom
+Bacteriology	Bacteria (2) - Rank: Superkingdom
+Zoology	     Metazoa (33208) excluding those of Class Insecta (50557) - Rank: Kingdom
+Mycology	    Fungi (4751) - Rank: Kingdom
+Botany	      Viridiplantae (33090) - Rank: Kingdom
+* All organisms of the clade Opisthokonta, apart from Metazoa and Fungi, are treated as Protists.
+** Chlorophyta and Streptophyta are phyla of Viridiplantae, so they would go to Botany and not to Protists. 
+</pre></code>
+* Perl scripts and results are on Puhti `/scratch/project_2001426/stringdata/week_39`
+<pre><code>
+wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+tar xvzf taxdump.tar.gz
+cut -f1,3,5 nodes.dmp > id_parent_type.dmp
+cut -f1,3,7 names.dmp | egrep $'\t''scientific name' | cut -f 1,2 > scientific_names.tsv
+paste id_parent_type.dmp scientific_names.tsv > id_parent_type_with_name.tsv
+awk -F"\t" 'NR==FNR{a[$1];next}{if($1 in a){print $0}}' unique_annotated_names_and_ranks_only_species.tsv id_parent_type_with_name.tsv> species_in_s800.tsv
+cut -f2 species_in_s800.tsv > parents_of_species_in_s800.tsv
+awk -F"\t" 'NR==FNR{a[$1];next}{if($1 in a && $3=="genus"){print $0}}' parents_of_species_in_s800.tsv id_parent_type_with_name.tsv> genera_names.tsv
+awk -F"\t" '{printf("%s\t%s\t%s\n", $1,$5,$3)}' genera_names.tsv > genera_of_species_in_s800.tsv
+#add this in unique_annotated_names_and_ranks_only_species_genus.tsv
+cat unique_annotated_names_and_ranks_only_species_genus.tsv genera_of_species_in_s800.tsv > unique_annotated_species_genus_and_species_genera.tsv
+sort -u unique_annotated_species_genus_and_species_genera.tsv > tmp && mv tmp unique_annotated_species_genus_and_species_genera.tsv
+#get uniprot text file
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.dat.gz
+gzip -d uniprot_sprot.dat.gz
+#run perl script to generate file with PMIDs per organism
+#Input files: unique_annotated_species_genus_and_species_genera.tsv, uniprot_sprot.dat
+perl get_organisms_from_swissprot.pl
+#Output files: uniprot_organisms_fields_papers.tsv
+#get results per genus
+cut -f2-4 uniprot_organisms_fields_papers.tsv > uniprot_species-taxid_category_PMIDs.tsv
+sort -u uniprot_species-taxid_category_PMIDs.tsv > tmp && mv tmp uniprot_species-taxid_category_PMIDs.tsv
+awk -F"\t" 'NR==FNR{a[$1]=$2;next}{if($1 in a){printf("%s\t%s\n",a[$1],$0)}}' id_parent_type_with_name.tsv uniprot_species-taxid_category_PMIDs.tsv > uniprot_parent_taxid_species-taxid_category_PMIDs.tsv
+sort -u  uniprot_parent_taxid_species-taxid_category_PMIDs.tsv > tmp && mv tmp  uniprot_parent_taxid_species-taxid_category_PMIDs.tsv
+#run perl scripts to get final list:
+perl group_by_genera.pl
+perl get_unique_elements_last_column.pl
+</pre></code>
+
+### Negative class
+
+* Use the tagger outputs to sample articles in which (presumably) no species mentions occur and then tag them with a recent model to assess whether the models have a tendency to overtag due to the training data being enriched for species mentions (by comparison to a random sample of PubMed)
+* Create a sample of PMIDs without organism mentions on puhti here: `/scratch/project_2001426/stringdata/week_31_2/no-organism-mention-docs/no-organism-mention-pmid-sample.txt`. 
+* Process:
+<pre><code>
+sinteractive -A project_2001426    # not on a login node!
+cd /scratch/project_2001426/stringdata/week_31_2
+mkdir no-organism-mention-docs
+cd no-organism-mention-docs
+cut -f 1,7 ../all_matches.tsv | egrep $'\t''-2$' | cut -f 1 | uniq > organism-mention-pmids.txt
+cut -f 1 ../database_documents.tsv > all-pmids.txt
+split -l 1000000 all-pmids.txt all-pmids-
+for f in all-pmids-*; do echo $f; sort $f > sorted-$f; done
+sort -m sorted-all-pmids-* > sorted-all-pmids.txt
+rm all-pmids-* sorted-all-pmids-*
+split -l 1000000 organism-mention-pmids.txt organism-mention-pmids-
+for f in organism-mention-pmids-*; do echo $f; sort $f > sorted-$f; done     
+sort -m sorted-organism-mention-pmids-* > sorted-organism-mention-pmids.txt
+rm organism-mention-pmids-* sorted-organism-mention-pmids-*
+comm -2 -3 sorted-all-pmids.txt sorted-organism-mention-pmids.txt > no-organism-mention-pmids.txt
+wc -l all-pmids.txt organism-mention-pmids.txt no-organism-mention-pmids.txt 
+ 31257225 all-pmids.txt
+ 10936532 organism-mention-pmids.txt
+ 20320693 no-organism-mention-pmids.txt
+</pre></code>
+* i.e. 2/3 have no organism mentions detected by the tagger(!)
+<pre><code>
+perl -pe '$_ = "" unless(rand()<0.001)' no-organism-mention-pmids.txt > no-organism-mention-pmid-sample.txt
+wc -l no-organism-mention-pmid-sample.txt
+20406 no-organism-mention-pmid-sample.txt
+</pre></code>
 
 ## Experiments to automatically correct inconsistencies on the corpus
 
