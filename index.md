@@ -253,7 +253,6 @@ T3 Strain 87 96 LMG 21477
 
 * Use UniProt/Swiss-Prot annotations to identify categories of articles aligning with the original S800 categories that mention at least one genus or species that is not already annotated in S800. This will also include all genera of species in the S800 corpus which will be retrieved from mapping of species to their parental ranks in NCBI taxonomy. 
 * Process for filtering out "known" species/genera, to get the unique taxids and their corresponding NCBI Taxonomy scientific names from the current iteration of the annotation
-* <details><summary>Process</summary>
 <pre><code>
 wget 'http://ann.turkunlp.org:8088/ajax.cgi?action=downloadCollection&collection=%2FS800%2F&include_conf=1&protocol=1' -O S800.tar.gz
 tar xvzf S800.tar.gz
@@ -265,15 +264,16 @@ cut -f 1,5 nodes.dmp > ranks.tsv
 paste scientific_names.tsv ranks.tsv | cut -f 1,2,4 > scientific_names_and_ranks.tsv
 egrep '('$(tr '\n' '|' < unique-taxids.txt | perl -pe 's/\|$//')')'$'\t' scientific_names_and_ranks.tsv > unique_annotated_names_and_ranks.tsv
 </code></pre>
-</details>
 * Four taxids were in the data that were not found in this release of the taxonomy 27380, 67004, 891394, and 891400. These have been included in the final list (`unique_annotated_names_and_ranks.tsv`)
-<details><summary>Filter down to species and genus</summary>
+* Filter down to species and genus
+<pre><code>
 #get species and genera from that list
 egrep "species$|genus$" unique_annotated_names_and_ranks.tsv > unique_annotated_names_and_ranks_only_species_genus.tsv
 #get species mentions from the above list
 egrep "species$" unique_annotated_names_and_ranks.tsv > unique_annotated_names_and_ranks_only_species.tsv
-</details>
-* <details><summary>The mapping between categories in [S800 publication](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable) and NCBI Taxonomy</summary>
+</code></pre>
+* The mapping between categories in [S800 publication](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0065390&type=printable) and NCBI Taxonomy
+<pre><code>
 Category	    NCBI Taxonomy Name (NCBI TaxID)
 Protistology	All eukaryotes that are not Metazoa (includes Insects), Fungi* and Plants**
 Entomology	  Insecta (50557) - Rank: Class
@@ -284,7 +284,7 @@ Mycology	    Fungi (4751) - Rank: Kingdom
 Botany	      Viridiplantae (33090) - Rank: Kingdom
 * All organisms of the clade Opisthokonta, apart from Metazoa and Fungi, are treated as Protists.
 ** Chlorophyta and Streptophyta are phyla of Viridiplantae, so they would go to Botany and not to Protists. 
-</details>
+</code></pre>
 * Perl scripts and results are on Puhti `/scratch/project_2001426/stringdata/week_39`
 <pre><code>
 wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
