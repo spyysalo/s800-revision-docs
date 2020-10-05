@@ -78,6 +78,8 @@ These are mainly annotation boundary issues. Correct annotation boundaries was n
 
 ## Additional guidelines for reannotation of the S800 corpus
 
+* The first resource that is trusted to resolve issues is [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy). If there is still not enough information there then the [Catalogue of Life](http://www.catalogueoflife.org/) is advised
+
 ### Span consistency guidelines
 
 * Do __not__ include the expressions _sp. nov._ and _gen. nov., sp. nov._ in the species name, since these are supposedly used only the first time a genus and/or a species/subspecies is described to denote that it's new, so they are not part of the scientific name and shouldn't be found anywhere else other than the first paper describing them.
@@ -129,6 +131,7 @@ N1	Reference T1 Taxonomy:3701	Arabidopsis
   * _Suborder_: _Heteroptera_ --> __Order__
   * _Infraorder_: _dragonflies_ --> __Order__
 * _Tribe_ and _Subtribe_ are also normalized to __Family__
+* For __Subspecies__ mentions: when a subspecies name immediately follows a species name the entire mention is simply annotated as one slightly longer Species mention, e.g. _Phocoenoides dalli dalli_ annotated as __Species__ + __taxid: 9745__ (Rank: Subspecies).
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 ~~~ ann
 We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
@@ -159,6 +162,13 @@ T1 Species 0 25 Oscillochloris trichoides
 * __tree__ and __bush__ are non-taxonomic mentions and thus not annotated
 * Species names also in noun phrase premodifier positions (e.g. __Arabidopsis__ EDR1, __Aspergillus nidulans__ cells) also in cases where they appear as part of the name of an entity of a non-organism type (e.g. __human__ epidermal growth factor receptor 2 (HER2)) are annotated.
 * Abbreviations are marked if the abbreviation stands for an organism mention in scope of the annotation, but not if the full form merely includes an organism mention e.g. in modifier position. For example, the __H__ in __HER2__ is not annotated despite it standing for __human__.
+* Standalone __alga__ (__algae__): __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/17259190?focus=T6) Algae is an informal term for a large and diverse group of photosynthetic eukaryotic organisms.
+* __protist__ (any eukaryotic organism that is not an animal, plant, or fungus) is a non-taxonomical expression and will be annotated as __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7708661?focus=T18)
+* __marsupial__ (animals carry the young in a pouch) is a mammalian clade, [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7700877) and will be annotated as __OOS__ + __taxid:9263__
+* __methanotroph__ is a non-taxonomical expression and will be annotated as __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T1)
+* __prokaryotes__ includes _Bacteria_ and _Archaea_ in the current three-domain system, so this will be annotated as __OOS__ + __no taxid__, despite the fact that __eukaryotes__ will be annotated as __OOS__ + __taxid:2759__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T15) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T16)
+* __heterokonts__ and __alveolates__ are clades of microorganisms and will be annotated as __OOS__ + __taxid:33634__ and __taxid:33630__ respectively [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T18) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T19)
+* __cyanobacteria__, __eubacteria__ and the like should be annotated as __OOS__ unless it's clear from context that the reference is definitely to the genus __Cyanobacterium__ or __Eubacterium__ respectively.
 
 #### Strains
 
@@ -236,6 +246,9 @@ T3 Strain 87 96 LMG 21477
 * FGSC should not be annotated as it refers to something that's out of scope, namely Fusarium graminearum complex [22004876](http://ann.turkunlp.org:8088/index.xhtml#/S800/22004876?focus=T2)
 * Mentions of carnivores in [21323921](http://ann.turkunlp.org:8088/index.xhtml#/S800/21323921) have been annotated as __OOS__, interpreting these to refer generally to meat-eating animals rather than the mammalian order __Carnivora__
 * __human__ and __primates__ in a context of __non-human primates__ are annotated as __two mentions__ [21295520](http://ann.turkunlp.org:8088/index.xhtml#/S800/21295520?focus=T9)
+* __Dictyoptera__ in [19257902](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/19257902) is a clade including two orders Blattodea (cockroaches) and Mantodea (mantids). This has been annotated as __OOS__ + __taxid:6970__ (_Dictyoptera_ clade)
+* __termite__ in [19257902](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/19257902) might be a family __Termitoidae__ (termites), even though that's no rank in NCBI taxonomy.  Below Blattoidea superfamily, other sister nodes are family. I decided to annotate as __Family__ + __taxid:1912919__ following the taxonomy presented in __Cataloue of life__
+* [2435057](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/2435057) is discussing about retroviruses, but terminology there is quite old (published in 1987). ICTV (International Committee on Taxonomy of Viruses) was used to figure out how those viruses are called/classified in that period tracing its history.
 
 ### Guidelines pending to be applied/decided upon
 
