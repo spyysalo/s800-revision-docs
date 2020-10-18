@@ -169,6 +169,7 @@ T1 Species 0 25 Oscillochloris trichoides
 * __prokaryotes__ includes _Bacteria_ and _Archaea_ in the current three-domain system, so this will be annotated as __OOS__ + __no taxid__, despite the fact that __eukaryotes__ will be annotated as __OOS__ + __taxid:2759__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T15) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T16)
 * __heterokonts__ and __alveolates__ are clades of microorganisms and will be annotated as __OOS__ + __taxid:33634__ and __taxid:33630__ respectively [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T18) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T19)
 * __cyanobacteria__, __eubacteria__ and the like should be annotated as __OOS__ unless it's clear from context that the reference is definitely to the genus __Cyanobacterium__ or __Eubacterium__ respectively.
+* __Young animals__ (e.g. chicks, calfs etc) should __NOT__ receive an annotation or should receive an __OOS__ annotation
 
 #### Strains
 
@@ -180,6 +181,7 @@ T1 Species 7 14 GSW-R14
 T2 Species 72 86 F. gelidilacus
 T3 Strain 87 96 LMG 21477
 ~~~
+* mentions of the form _[Genus] sp. [Strain]_, should have a separate __Genus__ and __Strain__ annotation [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9268298?focus=37~59)
 
 #### Viruses
 
@@ -254,7 +256,6 @@ T3 Strain 87 96 LMG 21477
 
 * mutant species annotation [21054438](http://ann.turkunlp.org:8088/index.xhtml#/S800/21054438?focus=16~22)
 * japonica rice in [20946420](http://ann.turkunlp.org:8088/index.xhtml#/S800/20946420?focus=T10)
-* Annotate young animals (e.g. chicks, calfs etc). -- Contradicting with rule about annotating child/children
 * phage names [21097633](http://ann.turkunlp.org:8088/index.xhtml#/S800/21097633?focus=93~97)
 * biotypes
 * plant clones
