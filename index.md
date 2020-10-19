@@ -160,7 +160,8 @@ Oscillochloris trichoides is a mesophilic, filamentous, photoautotrophic, nonsul
 T1 Species 0 25 Oscillochloris trichoides
 ~~~
 * __tree__ and __bush__ are non-taxonomic mentions and thus not annotated
-* Species names also in noun phrase premodifier positions (e.g. __Arabidopsis__ EDR1, __Aspergillus nidulans__ cells) also in cases where they appear as part of the name of an entity of a non-organism type (e.g. __human__ epidermal growth factor receptor 2 (HER2)) are annotated.
+* Species names in noun phrase premodifier positions (e.g. __Arabidopsis__ EDR1, __Aspergillus nidulans__ cells) also in cases where they appear as part of the name of an entity of a non-organism type (e.g. __human__ epidermal growth factor receptor 2 (HER2)) are annotated.
+* Species names are annotated when they are part of __hyphenated compound words__ (e.g. _human-infecting_) but __NOT__ when they appear as a __substring in a word not separated by a boundary__ such as a hyphen (e.g. _nonhuman_)
 * Abbreviations are marked if the abbreviation stands for an organism mention in scope of the annotation, but not if the full form merely includes an organism mention e.g. in modifier position. For example, the __H__ in __HER2__ is not annotated despite it standing for __human__.
 * Standalone __alga__ (__algae__): __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/17259190?focus=T6) Algae is an informal term for a large and diverse group of photosynthetic eukaryotic organisms.
 * __protist__ (any eukaryotic organism that is not an animal, plant, or fungus) is a non-taxonomical expression and will be annotated as __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7708661?focus=T18)
