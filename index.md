@@ -130,7 +130,7 @@ N1	Reference T1 Taxonomy:3701	Arabidopsis
   * _Suborder_: _true bugs_ --> __Order__
   * _Suborder_: _Heteroptera_ --> __Order__
   * _Infraorder_: _dragonflies_ --> __Order__
-* _Tribe_ and _Subtribe_ are also normalized to __Family__
+* _Tribe_ and _Subtribe_ are also normalized to __Family__, while _Cohort_ is normalized to __Class__
 * For __Subspecies__ mentions: when a subspecies name immediately follows a species name the entire mention is simply annotated as one slightly longer Species mention, e.g. _Phocoenoides dalli dalli_ annotated as __Species__ + __taxid: 9745__ (Rank: Subspecies).
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 ~~~ ann
