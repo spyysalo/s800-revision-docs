@@ -171,6 +171,7 @@ T1 Species 0 25 Oscillochloris trichoides
 * __heterokonts__ and __alveolates__ are clades of microorganisms and will be annotated as __OOS__ + __taxid:33634__ and __taxid:33630__ respectively [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T18) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T19)
 * __cyanobacteria__, __eubacteria__ and the like should be annotated as __OOS__ unless it's clear from context that the reference is definitely to the genus __Cyanobacterium__ or __Eubacterium__ respectively.
 * __Young animals__ (e.g. chicks, calfs etc) should __NOT__ receive an annotation or should receive an __OOS__ annotation
+* __Non-taxonomic groupings__ of organisms by their behaviour (e.g. _herbivores_, _predators_, _parasites_) are __OOS__ in the annotation
 
 #### Strains
 
