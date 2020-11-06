@@ -461,7 +461,7 @@ Comparing this with tags.tsv gives us an idea of what the LINNAEUS authors/annot
 * [S800](https://github.com/spyysalo/s800)
 
 ## Other repositories relevant to this project
-* [Hartuu's S800 examiner](https://harttu.github.io/s800_ambiguous_html/)
+* [Harttu's S800 examiner](https://harttu.github.io/s800_ambiguous_html/)
 * [S800 original in BRAT](http://ann.turkunlp.org:8088/index.xhtml#/S800-original/)
 * [S800 revision in BRAT](http://ann.turkunlp.org:8088/index.xhtml#/S800/)
 
