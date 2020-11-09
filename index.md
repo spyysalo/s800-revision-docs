@@ -109,6 +109,9 @@ T1 Strain 7 14 GSW-R14
 ### general annotation guidelines
 
 * Preprocessing errors (e.g. & amp;) should be fixed
+* __Clade__ mentions will receive __Clade__ normalizations and will be assigned type according to nearest __non-Clade__ ancestor
+* Similarly, __no rank__ mentions will receive __no rank__ normalizations and will be assigned type according to nearest __ranked__ ancestor
+* Mentions that are __not monophyletic__ (e.g. _fish_) should be annotated as __OOS__ with _Note: not monophyletic_
 * Adjectival forms like __murine__ (__taxid:10090__), __bovine__ (__taxid:9913__), __pneumococcal__ (__taxid:1313__) that map to a specific species should be annotated as such
 * Adjectival forms of Phyla (e.g. __cyanobacterial__: __taxid:1117__) can only be annotated as __OOS__ or not be annotated at all
 * Adjectival forms of __Kingdoms__ (e.g. __viral__, __bacterial__) can only be annotated as __OOS__ or not be annotated at all
@@ -132,6 +135,7 @@ N1	Reference T1 Taxonomy:3701	Arabidopsis
   * _Infraorder_: _dragonflies_ --> __Order__
 * _Tribe_ and _Subtribe_ are also normalized to __Family__, while _Cohort_ is normalized to __Class__
 * For __Subspecies__ mentions: when a subspecies name immediately follows a species name the entire mention is simply annotated as one slightly longer Species mention, e.g. _Phocoenoides dalli dalli_ annotated as __Species__ + __taxid: 9745__ (Rank: Subspecies).
+* __Biotypes__ should be treated the same way as __Subspecies__
 * __common name__ (_scientific name_)" mentions should be annotated as __two mentions__ e.g from 21054435:
 ~~~ ann
 We studied seasonal dynamics in delta^1^3C of CO2 efflux (delta^1^3C(E)) from non-leafy branches, upper and lower trunks and coarse roots of adult trees, comparing deciduous Fagus sylvatica (European beech) with evergreen Picea abies (Norway spruce).
@@ -145,11 +149,12 @@ T4 Species 235 248 Norway spruce
 For investigating cadmium uptake, we incubated protoplasts obtained from leaves of Thlaspi caerulescens (Ganges ecotype) with a Cd-specific fluorescent dye.
 T1 Species 83 103 Thlaspi caerulescens
 ~~~
-* Cultivars should be annotated as __OOS__
+* _Cultivars_ should be annotated as __OOS__. 
 ~~~ ann
 The physiological traits underlying the apparent drought resistance of 'Tomatiga de Ramellet' (TR) cultivars.
 T1 Out-of-scope 72 92 Tomatiga de Ramellet
 ~~~
+* _Rootstocks_ should be annotated as __OOS__ [e.g. in 20837155](http://ann.turkunlp.org:8088/index.xhtml#/S800/20837155?focus=sent~7)
 * Non-taxonomic groupings such as __Gram-positive/negative bacteria__, __marine bacteria__ or __enteric bacteria__ should not be annotated. e.g.
 ~~~ann
 The redox-sensitive transcription factor SoxR in enteric bacteria senses and regulates the cellular response to superoxide and nitric oxide.
@@ -159,19 +164,22 @@ The redox-sensitive transcription factor SoxR in enteric bacteria senses and reg
 Oscillochloris trichoides is a mesophilic, filamentous, photoautotrophic, nonsulfur, diazotrophic bacterium which is capable of carbon dioxide fixation via the reductive pentose phosphate cycle and possesses no assimilative sulfate reduction.
 T1 Species 0 25 Oscillochloris trichoides
 ~~~
-* __tree__ and __bush__ are non-taxonomic mentions and thus not annotated
+* __tree__ and __bush__ are non-taxonomic mentions and thus not annotated or annotated as __OOS__ + _Note: non-taxonomic_
 * Species names in noun phrase premodifier positions (e.g. __Arabidopsis__ EDR1, __Aspergillus nidulans__ cells) also in cases where they appear as part of the name of an entity of a non-organism type (e.g. __human__ epidermal growth factor receptor 2 (HER2)) are annotated.
 * Species names are annotated when they are part of __hyphenated compound words__ (e.g. _human-infecting_) but __NOT__ when they appear as a __substring in a word not separated by a boundary__ such as a hyphen (e.g. _nonhuman_)
 * Abbreviations are marked if the abbreviation stands for an organism mention in scope of the annotation, but not if the full form merely includes an organism mention e.g. in modifier position. For example, the __H__ in __HER2__ is not annotated despite it standing for __human__.
-* Standalone __alga__ (__algae__): __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/17259190?focus=T6) Algae is an informal term for a large and diverse group of photosynthetic eukaryotic organisms.
-* __protist__ (any eukaryotic organism that is not an animal, plant, or fungus) is a non-taxonomical expression and will be annotated as __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7708661?focus=T18)
-* __marsupial__ (animals carry the young in a pouch) is a mammalian clade, [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7700877) and will be annotated as __OOS__ + __taxid:9263__
+* Standalone __alga__ (__algae__, __microalgae__, __macroalgae__): __OOS__ + _Note: non-taxonomic_ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/17259190?focus=T6) Algae is an informal term for a large and diverse group of photosynthetic eukaryotic organisms.
+* __protist__ (any eukaryotic organism that is not an animal, plant, or fungus) is a non-taxonomical expression and will be annotated as __OOS__ + _Note: non-taxonomic_ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7708661?focus=T18)
+* __protozoa__ will also be annotated as __OOS__ + _Note: non-taxonomic_
 * __methanotroph__ is a non-taxonomical expression and will be annotated as __OOS__ + __no taxid__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T1)
+* __methanogen(s)__ over 50 _Archaea_ species: annotated as __OOS__ with _Note: not monophyletic_
 * __prokaryotes__ includes _Bacteria_ and _Archaea_ in the current three-domain system, so this will be annotated as __OOS__ + __no taxid__, despite the fact that __eukaryotes__ will be annotated as __OOS__ + __taxid:2759__ [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T15) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/1969923?focus=T16)
 * __heterokonts__ and __alveolates__ are clades of microorganisms and will be annotated as __OOS__ + __taxid:33634__ and __taxid:33630__ respectively [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T18) and [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9783459?focus=T19)
 * __cyanobacteria__, __eubacteria__ and the like should be annotated as __OOS__ unless it's clear from context that the reference is definitely to the genus __Cyanobacterium__ or __Eubacterium__ respectively.
 * __Young animals__ (e.g. chicks, calfs etc) should __NOT__ receive an annotation or should receive an __OOS__ annotation
 * __Non-taxonomic groupings__ of organisms by their behaviour (e.g. _herbivores_, _predators_, _parasites_) are __OOS__ in the annotation
+* __actinorhiza(l)__, __mycorrhiza(l)__, __ectomycorrhiza__: __OOS__ + _Note: non-taxonomic_
+* __species complex__ and __clonal complex__ rank: __OOS__
 
 #### Strains
 
@@ -184,6 +192,7 @@ T2 Species 72 86 F. gelidilacus
 T3 Strain 87 96 LMG 21477
 ~~~
 * mentions of the form _[Genus] sp. [Strain]_, should have a separate __Genus__ and __Strain__ annotation [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/9268298?focus=37~59)
+* descriptive references to _Strains_ using gene names are not annotated as organisms [e.g. 21097612](http://ann.turkunlp.org:8088/index.xhtml#/S800/21097612?focus=1449~1471)
 
 #### Viruses
 
@@ -200,7 +209,7 @@ T3 Strain 87 96 LMG 21477
   * "cytomegalovirus" __Genus__+__taxid:10358__ "Cytomegalovirus" _genus_
 * __dengue__: dengue is synonym for dengue fever (disease), annotate as  __OOS__ + __no taxid__ unless _dengue virus_ is mentioned when it should be annotated as __taxid:12637__ (species)
 * __smallpox__: smallpox is synonym for smallpox disease, annotate as  __OOS__ + __no taxid__ unless _smallpox virus_ is mentioned when it should be annotated as __taxid:10255__ (species)
-* __influenza__: influenza is synonym for the flu (disease), annotate as  __OOS__ + __no taxid__ unless _influenza X virus_ is mentioned when it should be annotated as _Species_
+* __influenza__: influenza is synonym for the flu (disease), annotate as  __OOS__ + __no taxid__ unless _influenza X virus_ is mentioned when it should be annotated as _Species_. EXCEPTION: __standalone influenza__ may be marked when organism sense is clear from context (e.g. __infulenza strains__)
 * __human adenovirus__ (or similar cases): when a mention cannot be normalized in an "identified" virus species it should be annotated e.g. as __Species__+__taxid:9606__ (_Homo sapiens_) for __human__ and __Family__+__taxid:10508__ (_Adenoviridae_) for _adenovirus
 
 #### Yeasts
@@ -229,13 +238,22 @@ T3 Strain 87 96 LMG 21477
   * __galaxias__ : __Genus__+__taxid:51242__ (__Galaxias__)
   * __mite__: __Class__+__taxid:6933__ (__Acari__ subclass)
   * __trout__: several species of fish, annotate as __OOS__ + __no taxid__
-  * __leafminer__: insects that eat the tissue of plants, annotate as __OOS__ + __no taxid__
+  * __leafminer__ and __leaf miner__: insects that eat the tissue of plants, annotate as __OOS__ + _Note: non-taxonomic_
   * __fishes__: __OOS__ (Clade-like concept, non-tetrapoda vertebrata)
-  * __bug__: __OOS__
+  * __bug__: __OOS__ + _Note: non-taxonomic_
+  * __field cricket__: __OOS__ + _Note: non-taxonomic_
   * __mirid bug__: __Family__+__taxid:30084__ (__Miridae__)
   * __clownfish__: __Family__+__taxid:30863__ (__Pomacentridae__)
   * __elephant__: 3 species, not monophyletic (both __Elephas__ and __Loxodonta__ genera), annotate as __OOS__ + __no taxid__
   * __crab__: infraorder containing 850 species, so it should be annotated as __Order__ + __taxid:6752__ (__Brachyura__)
+  * __grass__:  __Family__+__taxid:4479__ (__Poaceae__)
+  * __seabird(s)__: __OOS__ with _Note: non-taxonomic_
+  * __marsupial__ (animals carry the young in a pouch) is a mammalian clade, [e.g.](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/7700877) and will be annotated as __OOS__ + __taxid:9263__
+  * __coral(s)__: Hexacorallia + Octocorallia, but paraphyletic because sea anemones are also part of Hexacorallia: annotated as __OOS__ with _Note: not monophyletic_
+  * __DNA viruses__, __RNA viruses__ map to no rank entries: annotated as __Kingdom__ + normalization to [2080735](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=2080735) and [2559587](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=2559587&lvl=3&lin=f&keep=1&srchmode=1&unlock), respectively
+  * __dsRNA mycoviruses__: __OOS__ with _Note: non-taxonomic_
+  * __cereal__: __OOS__ with _Note: non-taxonomic_
+  * __kittiwake__: __OOS__ and _Note: non-taxonomic_
 * Common names that should be annotated in the species level (but could be annotated in a higher taxonomic level)
   * __rat__: synonym for _Rattus norvegicus_ and __Rattus__. Should be annotated as _Rattus norvegicus_ (__taxid:10116__), unless explicitly referring to a different taxonomic unit (e.g. __cotton rat__: __Genus__ + __taxid:42414__ (__Sigmodon__))
   * __fruit fly__: synonym for _Drosophila melanogaster_ and __Drosophila__ genus and __Tephritidae__ family. Should be annotated as _Drosophila melanogaster_ (__taxid:7227__), unless explicitly referring to a different taxonomic unit
@@ -243,6 +261,8 @@ T3 Strain 87 96 LMG 21477
   * __duck__: synonym for _Anas platyrhynchos_, but can be a synonym for other __Anatidae__. Should be annotated as _Anas platyrhynchos_ (__taxid:8839__), unless explicitly referring to a different taxonomic unit
   * __midge__: synonym for _Chironomus thummi_, but can refer to several species of flies. Should be annotated as _Chironomus thummi_ (__taxid:7154__), unless explicitly referring to a different taxonomic unit
 
+
+  
 #### Very specific distinctions
 * 4 mentions of "astomes" in this document [21398102](http://ann.turkunlp.org:8088/index.xhtml#/S800/21398102?focus=sent~9) are __OOS__
 * Astome ciliates in this document [21398102](http://ann.turkunlp.org:8088/index.xhtml#/S800/21398102?focus=T15) are also __OOS__
@@ -253,15 +273,16 @@ T3 Strain 87 96 LMG 21477
 * __Dictyoptera__ in [19257902](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/19257902) is a clade including two orders Blattodea (cockroaches) and Mantodea (mantids). This has been annotated as __OOS__ + __taxid:6970__ (_Dictyoptera_ clade)
 * __termite__ in [19257902](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/19257902) might be a family __Termitoidae__ (termites), even though that's no rank in NCBI taxonomy.  Below Blattoidea superfamily, other sister nodes are family. I decided to annotate as __Family__ + __taxid:1912919__ following the taxonomy presented in __Cataloue of life__
 * [2435057](http://ann.turkunlp.org:8088/index.xhtml#/S800-extension/2435057) is discussing about retroviruses, but terminology there is quite old (published in 1987). ICTV (International Committee on Taxonomy of Viruses) was used to figure out how those viruses are called/classified in that period tracing its history.
+* __GII.4__ in [20980508](http://ann.turkunlp.org:8088/index.xhtml#/S800/20980508) has been annotated as species, following the general rule about __Clade__ mentions
+* __arbuscular mycorrhizal fungi__ (__AMF__) [e.g. in 20880038](http://ann.turkunlp.org:8088/index.xhtml#/S800/20880038) __OOS__ + _Note: non-taxonomic_
+* __tropical japonica rice__ (e.g. [20946420](http://ann.turkunlp.org:8088/index.xhtml#/S800/20946420?focus=T10)): following rule about __no rank__ entries: normalization to [1736656](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1736656) and type _Species_
+
 
 ### Guidelines pending to be applied/decided upon
 
 * mutant species annotation [21054438](http://ann.turkunlp.org:8088/index.xhtml#/S800/21054438?focus=16~22)
-* japonica rice in [20946420](http://ann.turkunlp.org:8088/index.xhtml#/S800/20946420?focus=T10)
-* phage names [21097633](http://ann.turkunlp.org:8088/index.xhtml#/S800/21097633?focus=93~97)
-* biotypes
-* plant clones
-* vole
+* Enterohemorrhagic Escherichia coli in 21148732 
+* panther, panthers
 
 ## Corpus expansion (S1000)
 
